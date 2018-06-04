@@ -1,0 +1,62 @@
+#courseManager {
+    color : white;
+    margin-right: 9px;
+    padding: 5px 5px;
+}
+
+.fa-plus {
+    font-size: 32px;
+}
+
+.topOfCourseList {
+    margin-left: 20px;
+    margin-right: 50px;
+
+}
+
+.table-fixed {
+    background-color: white;
+}
+
+.table-fixed tbody {
+    width: 100%;
+
+}
+
+
+body {
+    background-color: #f3f3f3;
+}
+
+#moduleList-left {
+    background-color: #334d5c;
+    text-align: center;
+}
+#addNewModule {
+
+    color: white;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+
+.module-list{
+    margin: 20px 15px;
+    color: white;
+    background-color: #5b707c;
+}
+
+#add-new-module{
+    padding: 0px;
+    margin: 20px 15px;
+}
+
+#topics{
+    background-color: white;
+}
+
+.active-module {
+    background-color: #f3f3f3;
+}
