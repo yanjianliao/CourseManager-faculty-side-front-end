@@ -13,7 +13,7 @@ export default class TopicRow extends React.Component {
 
 
     componentWillReceiveProps(newProps) {
-        console.log(newProps.selectedId, this.props.topic.id);
+        // console.log(newProps.selectedId, this.props.topic.id);
         if(newProps.selectedId === this.props.topic.id) {
             this.setState({
                 buttonClassName: "btn btn-secondary active-button"
