@@ -21,3 +21,7 @@ export const addWidget = dispatch => {
 export const saveWidget = (dispatch, topicId) => {
     dispatch({type: constants.SAVE, topicId: topicId})
 };
+
+export const headingTextChanged = (dispatch, widgetId, newText) => {
+  dispatch({type: constants.HEADING_TEXT_CHANGED, id: widgetId, text: newText})
+};

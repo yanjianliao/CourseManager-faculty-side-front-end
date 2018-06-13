@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {HeadingContainer} from "./widgets/Heading";
 
 class Widget extends React.Component {
 
@@ -10,10 +11,8 @@ class Widget extends React.Component {
     render() {
         return (
             <div>
-
-                {this.props.widget.text}
+                <HeadingContainer widget={this.props.widget}/>
                 <hr/>
-
             </div>
 
 
@@ -27,7 +26,7 @@ const stateToPropertiesMapper = state => {
 };
 
 const dispatchToPropertiesMapper = dispatch => {
-    return dispatch
+
 };
 
 export const WidgetContainer = connect()(Widget);

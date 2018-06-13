@@ -35,7 +35,6 @@ export default class ModuleList extends React.Component {
 
     //
     componentDidMount() {
-        console.log(this.props);
         this.setState({
             courseId: this.props.courseId
         });

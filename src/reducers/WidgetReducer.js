@@ -5,7 +5,6 @@ let increment = 1;
 export const WidgetReducer = (state={widgets: []},action) => {
     switch (action.type) {
         case constants.FIND_ALL_WIDGETS:
-            console.log(action.widgets);
             return {
                 widgets: action.widgets
             };
@@ -25,7 +24,6 @@ export const WidgetReducer = (state={widgets: []},action) => {
                 ]
             };
         case constants.SAVE:
-            console.log(state.widgets);
             fetch(`http://localhost:8080/api/topic/${action.topicId}/widget`, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
@@ -38,6 +36,20 @@ export const WidgetReducer = (state={widgets: []},action) => {
                 }
             );
             return state;
+        case constants.HEADING_TEXT_CHANGED:
+            let newState = {
+                widgets: state.widgets.map(
+                    widget => {
+                        if(widget.id === action.id) {
+                            widget.text = action.text;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                ),
+                preview: state.preview
+            };
+            return newState;
     }
     return state;
 };

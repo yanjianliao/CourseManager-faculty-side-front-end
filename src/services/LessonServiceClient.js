@@ -18,7 +18,6 @@ export default class LessonServiceClient {
     }
 
     findAllLessonsForModule(mid) {
-        console.log('find');
         return fetch(LESSON_API_URL_MID.replace('MID', mid))
             .then(
                 (response) => response.json()
