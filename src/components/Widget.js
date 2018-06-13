@@ -11,7 +11,10 @@ class Widget extends React.Component {
     render() {
         return (
             <div>
-                <HeadingContainer widget={this.props.widget}/>
+                <div>
+                    <HeadingContainer widget={this.props.widget}/>
+                </div>
+
                 <hr/>
             </div>
 

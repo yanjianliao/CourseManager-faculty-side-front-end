@@ -3,6 +3,7 @@ import * as constants from '../constants/'
 let increment = 1;
 
 export const WidgetReducer = (state={widgets: []},action) => {
+    let newState;
     switch (action.type) {
         case constants.FIND_ALL_WIDGETS:
             return {
@@ -37,7 +38,7 @@ export const WidgetReducer = (state={widgets: []},action) => {
             );
             return state;
         case constants.HEADING_TEXT_CHANGED:
-            let newState = {
+            newState = {
                 widgets: state.widgets.map(
                     widget => {
                         if(widget.id === action.id) {
@@ -50,6 +51,19 @@ export const WidgetReducer = (state={widgets: []},action) => {
                 preview: state.preview
             };
             return newState;
+        case constants.HEADING_SIZE_CHANGED:
+            return {
+                widgets: state.widgets.map(
+                    widget => {
+
+                        if(widget.id === action.id) {
+                            widget.size = action.size;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                )
+            }
     }
     return state;
 };

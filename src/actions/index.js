@@ -25,3 +25,8 @@ export const saveWidget = (dispatch, topicId) => {
 export const headingTextChanged = (dispatch, widgetId, newText) => {
   dispatch({type: constants.HEADING_TEXT_CHANGED, id: widgetId, text: newText})
 };
+
+
+export const headingSizeChanged = (dispatch, widgetId, newSize) => {
+    dispatch({type: constants.HEADING_SIZE_CHANGED, id: widgetId, size: newSize})
+};

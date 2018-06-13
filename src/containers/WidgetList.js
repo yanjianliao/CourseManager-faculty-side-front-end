@@ -27,27 +27,34 @@ class WidgetList extends React.Component{
     render() {
         return (
             <div>
-                <button className="btn btn-success float-right" onClick={
-                    () => {
-                        this.props.saveWidget(this.props.topicId)
-                    }
-                }>
-                    save
-                </button>
-                {/*<h1>*/}
-                {/*{this.props.courseId}*/}
-                {/*{this.props.moduleId}*/}
-                {/*{this.props.lessonId}*/}
-                {/*{this.props.topicId}*/}
-                {/*</h1>*/}
-                <ul>
-                    {this.renderWidgetList()}
-                </ul>
-                <button className="btn btn-danger float-right" onClick={() => {
-                    this.props.addWidget();
-                }}>
-                    add
-                </button>
+                <div className="row" style={{'marginBottom': '20px'}}>
+                    <div className="col-12">
+                        <button className=" btn btn-success float-right" onClick={
+                            () => {
+                                this.props.saveWidget(this.props.topicId)
+                            }
+                        }>
+                            save
+                        </button>
+                    </div>
+                </div>
+                <hr/>
+                <div className="row">
+                    <ul className="col-12">
+                        {this.renderWidgetList()}
+                    </ul>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <button className="btn btn-danger float-right" onClick={() => {
+                            this.props.addWidget();
+                        }}>
+                            add
+                        </button>
+                    </div>
+
+                </div>
+
 
             </div>
         )
