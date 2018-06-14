@@ -45,4 +45,12 @@ export const nameChanged = (dispatch, widgetId, newName) => {
 
 export const preview = (dispatch) => {
     dispatch({type: constants.PREVIEW})
-}
+};
+
+export const positionUp = (dispatch, widgetId) => {
+    dispatch({type: constants.POSITION_UP_BUTTON, id: widgetId})
+};
+
+export const positionDown = (dispatch, widgetId) => {
+    dispatch({type: constants.POSITION_DOWN_BUTTON, id: widgetId})
+};

@@ -20,10 +20,18 @@ class Widget extends React.Component {
                     </div>
                     <div className="col-6">
                         <div className="row">
-                            <button style={{"marginRight": "5px"}} className="btn btn-warning col-sm-2">
+                            <button
+                                hidden={(this.props.widget.position === 0)}
+                                style={{"marginRight": "5px"}}
+                                className="btn btn-warning col-sm-2"
+                                onClick={() => this.props.positionUp(this.props.widget.id)}
+                            >
                                 <i className="fa fas fa-arrow-up"></i>
                             </button>
-                            <button style={{"marginRight": "5px"}} className="btn btn-warning col-sm-2">
+                            <button
+                                hidden={this.props.widget.position === this.props.widgets.length - 1}
+                                onClick={() => this.props.positionDown(this.props.widget.id)}
+                                style={{"marginRight": "5px"}} className="btn btn-warning col-sm-2">
                                 <i className="fa fas fa-arrow-down"></i>
                             </button>
 
@@ -63,13 +71,15 @@ class Widget extends React.Component {
 
 }
 
-const stateToPropertiesMapper = state => {
-
-};
+const stateToPropertiesMapper = state => ({
+    widgets: state.widgets
+});
 
 const dispatchToPropertiesMapper = dispatch => ({
     deleteWidget: (widgetId) => actions.deleteWidget(dispatch, widgetId),
-    changeWidgetType: (widgetId, newType) => actions.changeWidgetType(dispatch, widgetId, newType)
+    changeWidgetType: (widgetId, newType) => actions.changeWidgetType(dispatch, widgetId, newType),
+    positionUp: (widgetId) => actions.positionUp(dispatch, widgetId),
+    positionDown: (widgetId) => actions.positionDown(dispatch, widgetId),
 });
 
-export const WidgetContainer = connect(null, dispatchToPropertiesMapper)(Widget);
+export const WidgetContainer = connect(stateToPropertiesMapper, dispatchToPropertiesMapper)(Widget);
