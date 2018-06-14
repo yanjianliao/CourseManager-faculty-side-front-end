@@ -29,13 +29,23 @@ class WidgetList extends React.Component{
             <div>
                 <div className="row" style={{'marginBottom': '20px'}}>
                     <div className="col-12">
-                        <button className=" btn btn-success float-right" onClick={
+                        <button onClick={
+                            () => {
+                                this.props.preview();
+                            }
+                        }
+                                className=" btn btn-warning float-right"
+                        >
+                            preview
+                        </button>
+                        <button style={{"marginRight": "5px"}} className=" btn btn-success float-right" onClick={
                             () => {
                                 this.props.saveWidget(this.props.topicId)
                             }
                         }>
                             save
                         </button>
+
                     </div>
                 </div>
                 <hr/>
@@ -68,7 +78,8 @@ const stateToPropertiesMapper = state => ({
 const dispatchToPropertiesMapper = dispatch => ({
     findAllWidgets: (topicId) => actions.findAllWidgets(dispatch, topicId),
     addWidget: () => actions.addWidget(dispatch),
-    saveWidget: (topicId) => actions.saveWidget(dispatch, topicId)
+    saveWidget: (topicId) => actions.saveWidget(dispatch, topicId),
+    preview: () => actions.preview(dispatch)
 });
 
 

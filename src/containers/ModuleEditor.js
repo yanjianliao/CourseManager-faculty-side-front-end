@@ -45,7 +45,6 @@ export default class ModuleEditor extends React.Component{
     render() {
         return (
             <div>
-
                 <div className="row">
                     <LessonTabs
                         selectedCourse={this.props.match.params.courseId}

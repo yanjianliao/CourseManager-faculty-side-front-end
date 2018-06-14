@@ -2,20 +2,13 @@ import { connect } from 'react-redux'
 import React from 'react'
 import * as actions from '../../actions'
 
-const Heading = ({widget, headingTextChanged, headingSizeChanged}) => {
+const Heading = ({widget, textChanged, headingSizeChanged, nameChanged, preview}) => {
     let selectedElement;
     let inputElement;
+    let nameInputElement;
     return (
         <div>
-            <div className="row">
-                <div  className="col-8 float-left">
-                    <h3>Heading Widget</h3>
-                </div>
-                <div  className="col-4">
-                     <button className="btn btn-danger float-right">delete</button>
-                </div>
-            </div>
-            <div className="row">
+            <div hidden={preview} className="row">
                 <form className="col-12">
                     <div className="form-group">
                         <input className="form-control"
@@ -24,7 +17,7 @@ const Heading = ({widget, headingTextChanged, headingSizeChanged}) => {
                                ref={node => inputElement=node}
                                onChange={
                                    () => {
-                                       headingTextChanged(widget.id, inputElement.value)
+                                       textChanged(widget.id, inputElement.value)
                                    }
                                }
                         />
@@ -47,6 +40,8 @@ const Heading = ({widget, headingTextChanged, headingSizeChanged}) => {
                         <input className="form-control"
                                placeholder="Heading name"
                                value={widget.name}
+                               ref={node => nameInputElement=node}
+                               onChange={() => nameChanged(widget.id, nameInputElement.value)}
                         />
                     </div>
                 </form>
@@ -60,12 +55,16 @@ const Heading = ({widget, headingTextChanged, headingSizeChanged}) => {
     )
 };
 
+
+const stateToPropertiesMapper = state => ({
+    preview: state.preview
+});
+
 const dispatchToPropertiesMapper = dispatch => ({
-    headingTextChanged: (widgetId, newText) => actions.headingTextChanged(dispatch, widgetId, newText),
-    headingSizeChanged: (widgetId, newSize) => {
-        actions.headingSizeChanged(dispatch, widgetId, newSize)
-    }
+    textChanged: (widgetId, newText) => actions.textChanged(dispatch, widgetId, newText),
+    headingSizeChanged: (widgetId, newSize) => actions.headingSizeChanged(dispatch, widgetId, newSize),
+    nameChanged: (widgetId, newName) => actions.nameChanged(dispatch, widgetId, newName)
 });
 
 
-export const HeadingContainer = connect(null, dispatchToPropertiesMapper)(Heading);
+export const HeadingContainer = connect(stateToPropertiesMapper, dispatchToPropertiesMapper)(Heading);
