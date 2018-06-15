@@ -8,7 +8,7 @@ const Heading = ({widget, textChanged, headingSizeChanged, nameChanged, preview}
     let nameInputElement;
     return (
         <div>
-            <div hidden={preview} className="row">
+            <div hidden={preview}>
                 <form className="col-12">
                     <div className="form-group">
                         <input className="form-control"
@@ -45,9 +45,8 @@ const Heading = ({widget, textChanged, headingSizeChanged, nameChanged, preview}
                         />
                     </div>
                 </form>
+                <h3>preview</h3>
             </div>
-
-            <h3>preview</h3>
             {widget.size == '1' && <h1>{widget.text}</h1>}
             {widget.size == '2' && <h2>{widget.text}</h2>}
             {widget.size == '3' && <h3>{widget.text}</h3>}

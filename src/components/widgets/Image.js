@@ -7,7 +7,8 @@ const Image = ({preview, nameChanged, widget, srcChanged}) => {
     let imageInput;
     return (
         <div>
-            <div hidden={preview} style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+            <div hidden={preview}>
+            <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
                 <input className="form-control"
                        placeholder="Image src"
                        ref={node=> imageInput=node}
@@ -15,7 +16,7 @@ const Image = ({preview, nameChanged, widget, srcChanged}) => {
                        value={widget.src ? widget.src : ''}
                 />
             </div>
-            <div hidden={preview} style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+            <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
                 <input className="form-control"
                        placeholder="Paragraph name"
                        ref={node=> nameInput=node}
@@ -23,9 +24,10 @@ const Image = ({preview, nameChanged, widget, srcChanged}) => {
                        value={widget.name}
                 />
             </div>
-            <div>
                 <h3>Preview</h3>
+            </div>
 
+            <div>
                 <img src={widget.src}/>
             </div>
 

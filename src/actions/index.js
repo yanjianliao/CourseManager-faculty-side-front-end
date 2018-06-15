@@ -62,3 +62,7 @@ export const listWidgetTypeChanged = (dispatch, widgetId, listType) => {
 export const srcChanged = (dispatch, widgetId, src) => {
     dispatch({type: constants.IMAGE_SRC_CHANGED, id: widgetId, src: src})
 };
+
+export const linkHrefChanged = (dispatch, widgetId, href) => {
+    dispatch({type: constants.LINK_HREF_CHANGED, id: widgetId, href: href})
+};

@@ -18,8 +18,6 @@ const List = ({widget, textChanged, nameChanged, preview, listWidgetTypeChanged}
                           onChange={ () => textChanged(widget.id, textAreaElement.value)}
                           ref={node => textAreaElement=node}
                 />
-            </div>
-            <div hidden={preview}>
                 <select style={{"marginTop" :"20px"}}
                         className="custom-select"
                         onChange={ () => listWidgetTypeChanged(widget.id, selectedElement.value)}
@@ -29,8 +27,7 @@ const List = ({widget, textChanged, nameChanged, preview, listWidgetTypeChanged}
                     <option value={'unordered'}>Unordered list</option>
                     <option value={'ordered'}>Ordered list</option>
                 </select>
-            </div>
-            <div hidden={preview} style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+            <div style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
                 <input className="form-control"
                        placeholder="Paragraph name"
                        ref={node=> nameInput=node}
@@ -38,8 +35,10 @@ const List = ({widget, textChanged, nameChanged, preview, listWidgetTypeChanged}
                        value={widget.name}
                 />
             </div>
+            <h3>Preview</h3>
+            </div>
             <div>
-               <h3>Preview</h3>
+
                 <div className="container">
                     { (widget.listType === 'ordered') &&
                     <div>

@@ -17,16 +17,18 @@ const Paragraph = ({widget, textChanged, nameChanged, preview}) => {
                           rows="3"
                           ref={n => textAreaElement=n}
                 />
-            </div>
-            <div hidden={preview} style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
-                <input className="form-control"
-                       placeholder="Paragraph name"
-                       value={widget.name}
-                       ref={node => nameInputElement=node}
-                       onChange={() => nameChanged(widget.id, nameInputElement.value)}
+
+                <div style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+                    <input className="form-control"
+                           placeholder="Paragraph name"
+                           value={widget.name}
+                           ref={node => nameInputElement=node}
+                           onChange={() => nameChanged(widget.id, nameInputElement.value)}
                 />
+                </div>
+                <h3>preview</h3>
             </div>
-            <h3>preview</h3>
+
             {widget.text}
         </div>
     )

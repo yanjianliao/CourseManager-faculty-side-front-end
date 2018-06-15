@@ -4,6 +4,7 @@ import {HeadingContainer} from "./widgets/Heading";
 import {ParagraphContainer} from "./widgets/Paragraph";
 import {ListContainer} from "./widgets/List";
 import {ImageContainer} from "./widgets/Image";
+import {LinkContainer} from './widgets/Link'
 import * as actions from "../actions";
 
 
@@ -21,7 +22,7 @@ class Widget extends React.Component {
                     <div className="col-6">
                         <h3>{this.props.widget.widgetType} Widget</h3>
                     </div>
-                    <div className="col-6">
+                    <div hidden={this.props.preview} className="col-6">
                         <div className="row">
                             <button
                                 hidden={(this.props.widget.position === 0)}
@@ -50,6 +51,7 @@ class Widget extends React.Component {
                                 <option>Paragraph</option>
                                 <option>List</option>
                                 <option>Image</option>
+                                <option>Link</option>
                             </select>
 
                               <button
@@ -65,6 +67,7 @@ class Widget extends React.Component {
                     {this.props.widget.widgetType === 'Paragraph' && <ParagraphContainer widget={this.props.widget}/>}
                     {this.props.widget.widgetType === 'List' && <ListContainer widget={this.props.widget}/>}
                     {this.props.widget.widgetType === 'Image' && <ImageContainer widget={this.props.widget}/>}
+                    {this.props.widget.widgetType === 'Link' && <LinkContainer widget={this.props.widget}/>}
                 </div>
                 <hr/>
             </div>
@@ -76,7 +79,8 @@ class Widget extends React.Component {
 }
 
 const stateToPropertiesMapper = state => ({
-    widgets: state.widgets
+    widgets: state.widgets,
+    preview: state.preview
 });
 
 const dispatchToPropertiesMapper = dispatch => ({
