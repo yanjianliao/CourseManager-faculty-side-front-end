@@ -6,7 +6,8 @@ let position = 0;
 export const WidgetReducer = (state={widgets: [], preview: false},action) => {
     let newState;
     let temp;
-    console.log(state.widgets);
+    // console.log(JSON.stringify(state.widgets));
+    // console.log(state.widgets);
     switch (action.type) {
         case constants.FIND_ALL_WIDGETS:
             position = 0;
@@ -27,7 +28,9 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                         text: '',
                         name: '',
                         id: ++increment,
-                        position: state.widgets.length
+                        position: state.widgets.length,
+                        listType: 'unordered',
+
                     }
                 ],
                 preview: state.preview
@@ -132,6 +135,9 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
             newState.widgets.sort((a, b) => a.position - b.position);
+            // console.log(newState.widgets);
+            // newState = state;
+            // newState.widgets.sort((a, b) => b.position - a.position);
             return newState;
         case constants.POSITION_DOWN_BUTTON:
             newState = {
@@ -148,7 +154,33 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
             newState.widgets.sort((a, b) => a.position - b.position);
+            // console.log(newState.widgets);
             return newState;
+        case constants.LIST_WIDGET_TYPE_CHANGED:
+            return newState = {
+                widgets: state.widgets.map(
+                    (widget) => {
+                        if(widget.id === action.id) {
+                            widget.listType = action.listType;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                ),
+                preview: state.preview
+            };
+        case constants.IMAGE_SRC_CHANGED:
+            return {
+                widgets: state.widgets.map(
+                    widget => {
+                        if(widget.id === action.id) {
+                            widget.src = action.src;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                )
+            }
     }
     return state;
 };

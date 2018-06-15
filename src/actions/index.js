@@ -54,3 +54,11 @@ export const positionUp = (dispatch, widgetId) => {
 export const positionDown = (dispatch, widgetId) => {
     dispatch({type: constants.POSITION_DOWN_BUTTON, id: widgetId})
 };
+
+export const listWidgetTypeChanged = (dispatch, widgetId, listType) => {
+    dispatch({type: constants.LIST_WIDGET_TYPE_CHANGED, id: widgetId, listType: listType})
+};
+
+export const srcChanged = (dispatch, widgetId, src) => {
+    dispatch({type: constants.IMAGE_SRC_CHANGED, id: widgetId, src: src})
+};

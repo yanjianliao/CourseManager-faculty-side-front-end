@@ -2,7 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {HeadingContainer} from "./widgets/Heading";
 import {ParagraphContainer} from "./widgets/Paragraph";
+import {ListContainer} from "./widgets/List";
+import {ImageContainer} from "./widgets/Image";
 import * as actions from "../actions";
+
 
 class Widget extends React.Component {
 
@@ -60,8 +63,9 @@ class Widget extends React.Component {
                 <div>
                     {this.props.widget.widgetType === 'Heading' && <HeadingContainer widget={this.props.widget}/>}
                     {this.props.widget.widgetType === 'Paragraph' && <ParagraphContainer widget={this.props.widget}/>}
+                    {this.props.widget.widgetType === 'List' && <ListContainer widget={this.props.widget}/>}
+                    {this.props.widget.widgetType === 'Image' && <ImageContainer widget={this.props.widget}/>}
                 </div>
-
                 <hr/>
             </div>
 

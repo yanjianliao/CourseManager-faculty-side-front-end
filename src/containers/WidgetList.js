@@ -17,6 +17,7 @@ class WidgetList extends React.Component{
     }
 
     renderWidgetList() {
+        //here
         return this.props.widgets.map(
             (widget) => {
                 return <WidgetContainer widget={widget} key={widget.id}/>
@@ -26,6 +27,7 @@ class WidgetList extends React.Component{
 
     render() {
         return (
+
             <div>
                 <div className="row" style={{'marginBottom': '20px'}}>
                     <div className="col-12">
@@ -64,7 +66,6 @@ class WidgetList extends React.Component{
                     </div>
 
                 </div>
-
 
             </div>
         )

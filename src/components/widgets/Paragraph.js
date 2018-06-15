@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from "../../actions";
-import {preview} from "../../actions";
+
 
 const Paragraph = ({widget, textChanged, nameChanged, preview}) => {
 
@@ -35,6 +35,7 @@ const Paragraph = ({widget, textChanged, nameChanged, preview}) => {
 
 
 };
+
 
 
 const stateToPropertiesMapper = state => ({
