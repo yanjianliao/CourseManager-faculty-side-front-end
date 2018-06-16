@@ -30,7 +30,7 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                         id: ++increment,
                         position: state.widgets.length,
                         listType: 'unordered',
-
+                        editMode: false
                     }
                 ],
                 preview: state.preview
@@ -116,7 +116,12 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
             };
         case constants.PREVIEW:
             return {
-                widgets: state.widgets,
+                widgets: state.widgets.map(
+                    widget => {
+                        widget.editMode = false;
+                        return widget;
+                    }
+                ),
                 preview: !state.preview
             };
 
@@ -179,8 +184,9 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                         }
                         return widget;
                     }
-                )
-            }
+                ),
+                preview: state.preview
+            };
         case constants.LINK_HREF_CHANGED:
             return {
                 widgets: state.widgets.map(
@@ -191,7 +197,21 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                         }
                         return widget;
                     }
-                )
+                ),
+                preview: state.preview
+            };
+        case constants.EDIT_MODE_OPEN:
+            return {
+                widgets: state.widgets.map(
+                    widget => {
+                        if(widget.id === action.id) {
+                            widget.editMode = !widget.editMode;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                ),
+                preview: state.preview
             }
 
     }

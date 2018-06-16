@@ -19,8 +19,15 @@ class Widget extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-4">
                         <h3>{this.props.widget.widgetType} Widget</h3>
+                    </div>
+                    <div className="col-2">
+                        <button
+                            onClick={
+                                () => this.props.toggleEditMode(this.props.widget.id)
+                            }
+                            className="btn btn-success">edit</button>
                     </div>
                     <div hidden={this.props.preview} className="col-6">
                         <div className="row">
@@ -88,6 +95,7 @@ const dispatchToPropertiesMapper = dispatch => ({
     changeWidgetType: (widgetId, newType) => actions.changeWidgetType(dispatch, widgetId, newType),
     positionUp: (widgetId) => actions.positionUp(dispatch, widgetId),
     positionDown: (widgetId) => actions.positionDown(dispatch, widgetId),
+    toggleEditMode: (widgetId) => actions.toggleEditMode(dispatch, widgetId)
 });
 
 export const WidgetContainer = connect(stateToPropertiesMapper, dispatchToPropertiesMapper)(Widget);

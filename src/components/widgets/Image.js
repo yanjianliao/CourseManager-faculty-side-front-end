@@ -7,7 +7,7 @@ const Image = ({preview, nameChanged, widget, srcChanged}) => {
     let imageInput;
     return (
         <div>
-            <div hidden={preview}>
+            <div hidden={widget.editMode ? false : preview}>
             <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
                 <input className="form-control"
                        placeholder="Image src"

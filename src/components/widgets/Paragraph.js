@@ -9,7 +9,7 @@ const Paragraph = ({widget, textChanged, nameChanged, preview}) => {
     let textAreaElement;
     return (
         <div>
-            <div hidden={preview}>
+            <div hidden={widget.editMode ? false : preview}>
                 <textarea className="form-control"
                           placeholder="Paragraph text"
                           value={widget.text}

@@ -66,3 +66,7 @@ export const srcChanged = (dispatch, widgetId, src) => {
 export const linkHrefChanged = (dispatch, widgetId, href) => {
     dispatch({type: constants.LINK_HREF_CHANGED, id: widgetId, href: href})
 };
+
+export const toggleEditMode = (dispatch, widgetId) => {
+    dispatch({type: constants.EDIT_MODE_OPEN, id: widgetId})
+}

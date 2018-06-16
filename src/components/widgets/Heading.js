@@ -8,7 +8,7 @@ const Heading = ({widget, textChanged, headingSizeChanged, nameChanged, preview}
     let nameInputElement;
     return (
         <div>
-            <div hidden={preview}>
+            <div hidden={widget.editMode ? false : preview}>
                 <form className="col-12">
                     <div className="form-group">
                         <input className="form-control"

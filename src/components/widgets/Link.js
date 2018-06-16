@@ -9,7 +9,7 @@ const Link = ({textChanged, nameChanged, preview, widget, linkHrefChanged}) => {
     let linkInputElement;
     return (
         <div>
-            <div hidden={preview}>
+            <div hidden={widget.editMode ? false : preview}>
                 <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
                     <input className="form-control"
                            placeholder="Link URL"
