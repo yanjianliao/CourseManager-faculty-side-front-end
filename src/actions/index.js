@@ -2,7 +2,7 @@ import * as constants from '../constants'
 
 
 export const findAllWidgets = (dispatch, topicId)=> {
-    fetch(`http://localhost:8080/api/topic/${topicId}/widget`)
+    fetch(`https://first-yanjianliao.herokuapp.com/api/topic/${topicId}/widget`)
         .then(
             response => (response.json())
         ).then(

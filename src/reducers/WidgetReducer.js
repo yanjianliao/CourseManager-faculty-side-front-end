@@ -36,7 +36,7 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
         case constants.SAVE:
-            fetch(`http://localhost:8080/api/topic/${action.topicId}/widget`, {
+            fetch(`https://first-yanjianliao.herokuapp.com/api/topic/${action.topicId}/widget`, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
@@ -140,9 +140,6 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
             newState.widgets.sort((a, b) => a.position - b.position);
-            // console.log(newState.widgets);
-            // newState = state;
-            // newState.widgets.sort((a, b) => b.position - a.position);
             return newState;
         case constants.POSITION_DOWN_BUTTON:
             newState = {
