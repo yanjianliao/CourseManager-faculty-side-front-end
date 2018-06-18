@@ -7,32 +7,54 @@ const Link = ({textChanged, nameChanged, preview, widget, linkHrefChanged}) => {
     let inputElement;
     let nameInputElement;
     let linkInputElement;
+    let linkInputId = widget.id + 'linkInput';
+    let textInputId = widget.id + 'textInput';
+    let nameInputId = widget.id + 'nameInput';
     return (
         <div>
             <div hidden={widget.editMode ? false : preview}>
-                <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
-                    <input className="form-control"
-                           placeholder="Link URL"
-                           value={widget.href ? widget.href : ''}
-                           ref={node => linkInputElement=node}
-                           onChange={() => {linkHrefChanged(widget.id, linkInputElement.value)}}
-                    />
+                <div className="row" style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+                    <label className="col-sm-1 col-form-label" htmlFor={linkInputId}>
+                        <h5>link: </h5>
+                    </label>
+                    <div className="col-sm-11">
+                        <input className="form-control"
+                               id={linkInputId}
+                               placeholder="Link URL"
+                               value={widget.href ? widget.href : ''}
+                               ref={node => linkInputElement=node}
+                               onChange={() => {linkHrefChanged(widget.id, linkInputElement.value)}}
+                        />
+                    </div>
                 </div>
-                <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
-                    <input className="form-control"
-                           placeholder="text"
-                           value={widget.text}
-                           ref={node => inputElement=node}
-                           onChange={() => {textChanged(widget.id, inputElement.value)}}
-                    />
+                <div className='row' style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+                    <label className="col-sm-1 col-form-label" htmlFor={textInputId}>
+                        <h5>text: </h5>
+                    </label>
+                    <div className="col-sm-11">
+                        <input className="form-control"
+                               id={textInputId}
+                               placeholder="text"
+                               value={widget.text}
+                               ref={node => inputElement=node}
+                               onChange={() => {textChanged(widget.id, inputElement.value)}}
+                        />
+                    </div>
                 </div>
-                <div  style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
-                    <input className="form-control"
-                           placeholder="Widget name"
-                           value={widget.name}
-                           ref={node => nameInputElement=node}
-                           onChange={() => nameChanged(widget.id, nameInputElement.value)}
-                    />
+
+                <div className="row" style={{"marginTop" :"20px", "marginBottom" :"20px"}}>
+                    <label className="col-sm-1 col-form-label" htmlFor={nameInputId}>
+                        <h5>name: </h5>
+                    </label>
+                    <div className="col-sm-11">
+                        <input className="form-control"
+                               id={nameInputId}
+                               placeholder="Widget name"
+                               value={widget.name}
+                               ref={node => nameInputElement=node}
+                               onChange={() => nameChanged(widget.id, nameInputElement.value)}
+                        />
+                    </div>
                 </div>
 
                 <h3>Preview</h3>

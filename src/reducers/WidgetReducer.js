@@ -36,7 +36,7 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
         case constants.SAVE:
-            fetch(`https://first-yanjianliao.herokuapp.com/api/topic/${action.topicId}/widget`, {
+            fetch(`http://localhost:8080/api/topic/${action.topicId}/widget`, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
@@ -203,6 +203,19 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                     widget => {
                         if(widget.id === action.id) {
                             widget.editMode = !widget.editMode;
+                            return Object.assign({}, widget);
+                        }
+                        return widget;
+                    }
+                ),
+                preview: state.preview
+            };
+        case constants.LIST_ITEM_CHANGED:
+            return {
+                widgets: state.widgets.map(
+                    widget => {
+                        if(widget.id === action.id) {
+                            widget.listItem = action.listItem;
                             return Object.assign({}, widget);
                         }
                         return widget;

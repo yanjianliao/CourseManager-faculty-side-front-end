@@ -2,7 +2,7 @@ import * as constants from '../constants'
 
 
 export const findAllWidgets = (dispatch, topicId)=> {
-    fetch(`https://first-yanjianliao.herokuapp.com/api/topic/${topicId}/widget`)
+    fetch(`http://localhost:8080/api/topic/${topicId}/widget`)
         .then(
             response => (response.json())
         ).then(
@@ -69,4 +69,8 @@ export const linkHrefChanged = (dispatch, widgetId, href) => {
 
 export const toggleEditMode = (dispatch, widgetId) => {
     dispatch({type: constants.EDIT_MODE_OPEN, id: widgetId})
-}
+};
+
+export const listItemsChanged = (dispatch, widgetId, newListItems) => {
+    dispatch({type: constants.LIST_ITEM_CHANGED, id: widgetId, listItem: newListItems})
+};
