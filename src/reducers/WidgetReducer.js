@@ -36,6 +36,19 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
                 preview: state.preview
             };
         case constants.SAVE:
+            for(let i = 0; i < state.widgets.length; i++) {
+                for(let j = 0; j < state.widgets.length; j++) {
+                    if(i === j)
+                        continue;
+                    if(state.widgets[i].name === '' || state.widgets[j].name === '')
+                        continue;
+                    if(state.widgets[i].name === state.widgets[j].name) {
+                        alert('All the widget names have to be unique within a topic');
+                        return state;
+                    }
+
+                }
+            }
             fetch(`http://localhost:8080/api/topic/${action.topicId}/widget`, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
