@@ -49,7 +49,7 @@ export const WidgetReducer = (state={widgets: [], preview: false},action) => {
 
                 }
             }
-            fetch(`http://localhost:8080/api/topic/${action.topicId}/widget`, {
+            fetch(`https://first-yanjianliao.herokuapp.com/api/topic/${action.topicId}/widget`, {
                 method: 'post',
                 body: JSON.stringify(state.widgets),
                 headers: {
