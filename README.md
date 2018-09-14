@@ -1,1 +1,1 @@
-server: <https://github.com/yanjianliao/assignment-web-2018>
+server: https://github.com/yanjianliao/CourseManager-faulty-side-back-end
