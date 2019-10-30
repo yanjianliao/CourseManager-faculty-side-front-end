@@ -1,1 +1,1 @@
-server: https://github.com/yanjianliao/CourseManager-faulty-side-back-end
+server: https://github.com/yanjianliao/CourseManager-faculty-side-back-end
